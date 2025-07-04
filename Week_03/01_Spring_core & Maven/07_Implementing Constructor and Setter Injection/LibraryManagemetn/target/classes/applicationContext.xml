@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- LoggerService: No dependencies -->
+    <bean id="loggerService" class="org.example.LoggerService"/>
+
+    <!-- BookRepository: No dependencies -->
+    <bean id="bookRepository" class="org.example.BookRepository"/>
+
+    <!-- BookService: constructor + setter injection -->
+    <bean id="bookService" class="org.example.BookService">
+        <!-- Constructor injection -->
+        <constructor-arg ref="loggerService"/>
+
+        <!-- Setter injection -->
+        <property name="bookRepository" ref="bookRepository"/>
+    </bean>
+
+</beans>
